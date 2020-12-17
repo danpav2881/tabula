@@ -1,0 +1,48 @@
+# Description:
+I cannot open some pdf files which I can open with normal pdf readers (if you want I can send the file)
+
+# - environmental info:
+
+Python version:
+    3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)]
+Java version:
+    java version "1.8.0_271"
+Java(TM) SE Runtime Environment (build 1.8.0_271-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.271-b09, mixed mode)
+tabula-py version: 2.2.0
+platform: Windows-10-10.0.18362-SP0
+uname:
+    uname_result(system='Windows', node='ITL08614W', release='10', version='10.0.18362', machine='AMD64', processor='Intel64 Family 6 Model 142 Stepping 9, GenuineIntel')
+linux_distribution: ('', '', '')
+mac_ver: ('', ('', '', ''), '')
+
+
+
+# Launching tabula through Python I'm getting the following error:
+
+```
+Error from tabula-java:
+Exception in thread "main" java.lang.StackOverflowError
+	at org.apache.fontbox.ttf.GlyphTable.getGlyphData(GlyphTable.java:199)
+	at org.apache.fontbox.ttf.GlyphTable.getGlyph(GlyphTable.java:182)
+	at org.apache.fontbox.ttf.GlyfCompositeDescript.initDescriptions(GlyfCompositeDescript.java:287)
+	at org.apache.fontbox.ttf.GlyfCompositeDescript.<init>(GlyfCompositeDescript.java:80)
+	at org.apache.fontbox.ttf.GlyphData.initData(GlyphData.java:65)
+  
+	at org.apache.fontbox.ttf.GlyphTable.getGlyphData(GlyphTable.java:202)
+	at org.apache.fontbox.ttf.GlyphTable.getGlyph(GlyphTable.java:182)
+	at org.apache.fontbox.ttf.GlyfCompositeDescript.initDescriptions(GlyfCompositeDescript.java:287)
+	at org.apache.fontbox.ttf.GlyfCompositeDescript.<init>(GlyfCompositeDescript.java:80)
+	at org.apache.fontbox.ttf.GlyphData.initData(GlyphData.java:65)
+  > this block repeated 204 times
+  
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "C:\Users\dpa032\Documents\Python\PDFreader\venv\lib\site-packages\tabula\io.py", line 322, in read_pdf
+    output = _run(java_options, kwargs, path, encoding)
+  File "C:\Users\dpa032\Documents\Python\PDFreader\venv\lib\site-packages\tabula\io.py", line 85, in _run
+    check=True,
+  File "C:\Program Files\Python37\lib\subprocess.py", line 487, in run
+    output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['java', '-Dfile.encoding=UTF8', '-jar', 'C:\\Users\\dpa032\\Documents\\Python\\PDFreader\\venv\\lib\\site-packages\\tabula\\tabula-1.0.4-jar-with-dependencies.jar', '--pages', 'all', '--guess', '--format', 'JSON', 'C:\\Users\\dpa032\\Downloads\\178891_20201216_Mensile_16081439728290_10519355386629392.pdf']' returned non-zero exit status 1.
+```
